@@ -1,29 +1,43 @@
-from memu_item import MenuItem
+from food import Food
+from drink import Drink
 
-menu_item1 = MenuItem('サンドイッチ', 500)
-menu_item2 = MenuItem('チョコケーキ', 400)
-menu_item3 = MenuItem('コーヒー', 300)
-menu_item4 = MenuItem('オレンジジュース', 200)
+food1 = Food('サンドイッチ', 500, 330)
+food2 = Food('チョコケーキ', 400, 450)
+food3 = Food('シュークリーム', 200, 180)
 
-menu_items = [menu_item1, menu_item2, menu_item3, menu_item4]
+foods = [food1, food2, food3]
 
+drink1 = Drink('コーヒー', 300, 180)
+drink2 = Drink('オレンジジュース', 200, 350)
+drink3 = Drink('エスプレッソ', 300, 30)
+
+drinks = [drink1, drink2, drink3]
+
+print('食べ物メニュー')
 index = 0
+for food in foods:
+    print(str(index) + '. ' + food.info())
+    index += 1
 
-for menu_item in menu_items:
-    print(str(index) + '. ' + menu_item.info())
+print('飲み物メニュー')
+index = 0
+for drink in drinks:
+    print(str(index) + '. ' + drink.info())
     index += 1
 
 print('--------------------')
 
-order = int(input('メニューの番号を入力してください: '))
-selected_menu = menu_items[order]
-print('選択されたメニュー: ' + selected_menu.name)
+food_order = int(input('食べ物の番号を選択してください: '))
+selected_food = foods[food_order]
+
+drink_order = int(input('飲み物の番号を選択してください: '))
+selected_drink = drinks[drink_order]
 
 # コンソールから入力を受け取り、変数countに代入してください
-count = int(input('個数を入力してください(3つ以上で1割引):'))
+count = int(input('何セット買いますか？(3つ以上で1割引): '))
 
-# get_total_priceメソッドを呼び出してください
-result = selected_menu.get_total_price(count)
+# selected_foodとselected_drinkのそれぞれに対して、get_total_priceメソッドを呼び出してください
+result = selected_food.get_total_price(count) + selected_drink.get_total_price(count)
 
 # 「合計は〇〇円です」となるように出力してください
 print('合計は' + str(result) + '円です')

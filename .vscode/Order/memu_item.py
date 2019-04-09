@@ -8,10 +8,8 @@ class MenuItem:
 
     def get_total_price(self, count):
         total_price = self.price * count
-        
-        # countが3以上のとき、total_priceに0.9をかけてください
+
         if count >= 3:
-            total_price = total_price * 0.9
-        
-        # total_priceを四捨五入して、returnしてください
+            total_price *= 0.9
+
         return round(total_price)
