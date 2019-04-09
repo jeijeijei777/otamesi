@@ -1,4 +1,4 @@
-pragma solidity ^0.5.6;
+pragma solidity ^0.4.0;
 
 contract ZombieFactory {
 
@@ -14,7 +14,7 @@ contract ZombieFactory {
 
     Zombie[] public zombies;
 
-    function _createZombie(string _name, uint _dna) private {
+    function _createZombie(string _name, uint _dna) private view returns(string memory) {
         uint id = zombies.push(Zombie(_name, _dna)) - 1;
         NewZombie(id, _name, _dna);
     } 
